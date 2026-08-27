@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,43 +52,55 @@
   <body>
     <header class="header">
       <div class="container header-container">
-        <a href="#" class="logo">yachtjet</a>
-        <nav class="header-nav">
+        <a class="logo" href="#hero" aria-label="YachtJet home">yachtjet</a>
+
+        <nav class="header-nav" aria-label="Main navigation">
           <ul class="header-nav-list">
-            <li class="header-nav-item">
-              <a class="header-nav-link" href="#">About</a>
+            <li>
+              <a class="header-nav-link" href="#about">About</a>
             </li>
-            <li class="header-nav-item">
-              <a class="header-nav-link" href="#">Yachts</a>
+            <li>
+              <a class="header-nav-link" href="#yachts">Yachts</a>
             </li>
-            <li class="header-nav-item">
-              <a class="header-nav-link" href="#">Reviews</a>
+            <li>
+              <a class="header-nav-link" href="#reviews">Reviews</a>
             </li>
           </ul>
         </nav>
 
         <ul class="header-soc-list">
-          <li class="header-soc-item">
-            <a class="header-soc-link" href="">
+          <li>
+            <a class="header-soc-link" href="#" aria-label="Instagram">
               <svg class="header-soc-icon" width="20" height="20">
                 <use href="./images/icons.svg#icon-insta"></use>
               </svg>
             </a>
           </li>
-          <li class="header-soc-item">
-            <a class="header-soc-link" href=""
-              ><svg class="header-soc-icon" width="20" height="20">
-                <use href="./images/icons.svg#icon-youtube"></use></svg
-            ></a>
+
+          <li>
+            <a class="header-soc-link" href="#" aria-label="YouTube">
+              <svg class="header-soc-icon" width="20" height="20">
+                <use href="./images/icons.svg#icon-youtube"></use>
+              </svg>
+            </a>
           </li>
-          <li class="header-soc-item">
-            <a class="header-soc-link" href=""
-              ><svg class="header-soc-icon" width="20" height="20">
-                <use href="./images/icons.svg#icon-fb"></use></svg
-            ></a>
+
+          <li>
+            <a class="header-soc-link" href="#" aria-label="Facebook">
+              <svg class="header-soc-icon" width="20" height="20">
+                <use href="./images/icons.svg#icon-fb"></use>
+              </svg>
+            </a>
           </li>
         </ul>
-        <button type="button" class="menu-open-btn">
+
+        <button
+          class="menu-open-btn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
           <svg class="menu-open-icon" width="28" height="28">
             <use href="./images/icons.svg#icon-menu-open-btn"></use>
           </svg>
@@ -146,7 +158,7 @@
     </div>
 
     <main>
-      <section class="hero section">
+      <section class="hero section" id="hero" id="about">
         <div class="hero-container container">
           <h1 class="hero-title">
             Explore the High Seas with Our Luxury Yacht Rentals
@@ -215,7 +227,7 @@
         </div>
       </section>
 
-      <section class="yacht-catalog section">
+      <section class="yacht-catalog section" id="yachts">
         <div class="yacht-catalog-container container">
           <h2 class="yacht-catalog-title section-title">
             Choose your dream yacht and sail away into the sunset
@@ -535,7 +547,7 @@
         </div>
       </section>
 
-      <section class="reviews section">
+      <section class="reviews section" id="reviews">
         <div class="reviews-container container">
           <h2 class="reviews-title section-title">
             YachtJet take pride in providing the best possible service and
