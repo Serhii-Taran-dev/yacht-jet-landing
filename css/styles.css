@@ -808,7 +808,7 @@ html {
   .yacht-fleet-picture {
     bottom: -232px;
 
-    width: 704px;
+    width: 706px;
     height: 467px;
   }
 }
@@ -838,7 +838,7 @@ html {
   .yacht-fleet-picture {
     bottom: -88px;
 
-    width: 1180px;
+    width: 1182px;
     height: 467px;
   }
 }
@@ -860,7 +860,7 @@ html {
   .yacht-fleet-picture {
     bottom: -75px;
 
-    width: 1340px;
+    width: 1342px;
     height: 467px;
   }
 }
@@ -978,28 +978,53 @@ html {
 }
 
 .yacht-catalog-btn {
-  background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 48px;
+  padding: 0 28px;
+
   border: 1px solid rgba(251, 251, 251, 0.35);
+  border-radius: 999px;
+
+  background-color: transparent;
   color: var(--color-light);
 
-  padding: 14px 32px;
-  border-radius: 15px;
-
-  font-weight: 500;
   font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
 
-  display: block;
-  margin: 0 auto;
+  cursor: pointer;
 
-  transition: all 0.3s ease;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
 }
 
-.yacht-catalog-btn:hover,
-.yacht-catalog-btn:focus {
+.yacht-catalog-btn span {
+  transition: transform 250ms ease;
+}
+
+.yacht-catalog-btn:hover {
   background-color: var(--color-light);
   color: var(--color-dark);
+  border-color: var(--color-light);
+  transform: translateY(-2px);
+}
+
+.yacht-catalog-btn:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: 4px;
+}
+
+.yacht-catalog-btn:hover span,
+.yacht-catalog-btn:focus-visible span {
+  transform: translateX(4px);
 }
 
 @media screen and (min-width: 768px) {
@@ -1038,18 +1063,11 @@ html {
     font-size: 13px;
     line-height: 1.18;
   }
-
-  .yacht-catalog-btn {
-    padding: 16px 40px;
-
-    font-size: 18px;
-    line-height: 1.1;
-  }
 }
 
 @media screen and (min-width: 1280px) {
   .yacht-catalog {
-    padding-top: 305px;
+    padding-top: 232px;
   }
 
   .yacht-catalog-title {
@@ -1072,7 +1090,7 @@ html {
 
 @media screen and (min-width: 1440px) {
   .yacht-catalog {
-    padding-top: 282px;
+    padding-top: 240px;
   }
 
   .yacht-catalog-title {
