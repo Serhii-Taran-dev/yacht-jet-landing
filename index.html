@@ -472,10 +472,17 @@
         </div>
       </section>
 
-      <section class="rent section">
+      <section class="rent section" id="rent">
         <div class="rent-container container">
           <div class="rent-content">
-            <h2 class="rent-title section-title">Rent a yacht now</h2>
+            <div class="rent-heading">
+              <h2 class="rent-title section-title">Rent a yacht now</h2>
+
+              <p class="rent-description">
+                Tell us a little about your plans and our team will help you
+                find the perfect yacht for your journey.
+              </p>
+            </div>
 
             <form class="rent-form">
               <div class="form-field">
@@ -483,6 +490,7 @@
                   type="text"
                   name="full-name"
                   id="full-name"
+                  autocomplete="name"
                   class="form-input"
                   placeholder="Full Name"
                   required
@@ -494,6 +502,7 @@
                   type="email"
                   name="email"
                   id="email"
+                  autocomplete="email"
                   class="form-input"
                   placeholder="Email"
                   required
@@ -505,6 +514,7 @@
                   type="tel"
                   name="phone"
                   id="phone"
+                  autocomplete="tel"
                   class="form-input"
                   placeholder="Phone number"
                   required
@@ -520,7 +530,10 @@
                 ></textarea>
               </div>
 
-              <button type="submit" class="form-btn">Send</button>
+              <button type="submit" class="form-btn">
+                Send request
+                <span aria-hidden="true">→</span>
+              </button>
             </form>
           </div>
 
@@ -559,6 +572,7 @@
               alt="Luxury yacht at sunset"
               class="rent-img"
               loading="lazy"
+              decoding="async"
             />
           </picture>
         </div>
