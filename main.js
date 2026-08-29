@@ -70,3 +70,13 @@ document.addEventListener("keydown", (event) => {
     firstElement.focus();
   }
 });
+
+const header = document.querySelector(".header");
+
+function updateHeaderOnScroll() {
+  header.classList.toggle("is-scrolled", window.scrollY > 600);
+}
+
+window.addEventListener("scroll", updateHeaderOnScroll);
+
+updateHeaderOnScroll();

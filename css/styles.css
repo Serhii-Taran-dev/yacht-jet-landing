@@ -87,13 +87,21 @@ html {
 /* ---------------------- */
 /* ------- header ------- */
 
-.header {
+/* .header {
   position: absolute;
   top: 20px;
   left: 0;
   z-index: 100;
 
   width: 100%;
+} */
+
+.header {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .header-container {
@@ -111,6 +119,19 @@ html {
 
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    backdrop-filter 250ms ease;
+}
+
+.header.is-scrolled .header-container {
+  background-color: rgba(11, 29, 45, 0.88);
+  border-color: rgba(251, 251, 251, 0.18);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 .logo {
