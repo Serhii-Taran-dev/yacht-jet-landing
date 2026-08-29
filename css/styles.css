@@ -999,6 +999,12 @@ html {
   outline-offset: 4px;
 }
 
+.yacht-catalog-control:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
 .yacht-catalog-card {
   flex: 0 0 100%;
   max-width: none;
