@@ -33,3 +33,11 @@ document.addEventListener("keydown", (event) => {
     closeMenu();
   }
 });
+
+const tabletMedia = window.matchMedia("(min-width: 768px)");
+
+tabletMedia.addEventListener("change", (event) => {
+  if (event.matches && mobileMenu.classList.contains("is-open")) {
+    closeMenu();
+  }
+});
