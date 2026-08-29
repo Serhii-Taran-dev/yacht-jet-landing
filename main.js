@@ -157,3 +157,72 @@ function handleYachtResize() {
 }
 
 window.addEventListener("resize", handleYachtResize);
+
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+let startOffset = 0;
+
+yachtList.addEventListener("pointerdown", (event) => {
+  isDragging = true;
+  startX = event.clientX;
+  currentX = startX;
+
+  yachtList.setPointerCapture(event.pointerId);
+
+  const cardWidth = yachtCards[0].getBoundingClientRect().width;
+  const styles = window.getComputedStyle(yachtList);
+  const gap = parseFloat(styles.gap);
+
+  startOffset = currentYachtIndex * (cardWidth + gap);
+
+  yachtList.style.transition = "none";
+});
+
+yachtList.addEventListener("pointermove", (event) => {
+  if (!isDragging) return;
+
+  currentX = event.clientX;
+
+  const dragDistance = currentX - startX;
+  const offset = startOffset - dragDistance;
+
+  yachtList.style.transform = `translateX(-${offset}px)`;
+});
+
+yachtList.addEventListener("pointerup", (event) => {
+  if (!isDragging) return;
+
+  const swipeDistance = currentX - startX;
+  const swipeThreshold = 50;
+
+  yachtList.style.transition = "";
+
+  const visibleYachts = getVisibleYachts();
+  const maxIndex = yachtCards.length - visibleYachts;
+
+  if (swipeDistance < -swipeThreshold && currentYachtIndex < maxIndex) {
+    currentYachtIndex += 1;
+  } else if (swipeDistance > swipeThreshold && currentYachtIndex > 0) {
+    currentYachtIndex -= 1;
+  }
+
+  updateYachtCarousel();
+
+  yachtList.releasePointerCapture(event.pointerId);
+
+  isDragging = false;
+  startX = 0;
+  currentX = 0;
+});
+
+yachtList.addEventListener("pointercancel", () => {
+  if (!isDragging) return;
+
+  yachtList.style.transition = "";
+  updateYachtCarousel();
+
+  isDragging = false;
+  startX = 0;
+  currentX = 0;
+});

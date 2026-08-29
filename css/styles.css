@@ -947,6 +947,9 @@ html {
   width: 100%;
 
   transition: transform 400ms ease;
+
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .yacht-catalog-controls {
