@@ -97,7 +97,7 @@
         <button
           class="menu-open-btn"
           type="button"
-          aria-label="Open navigation menu"
+          aria-label="Open mobile menu"
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
@@ -108,58 +108,11 @@
       </div>
     </header>
 
-    <!-- <div class="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <div class="mobile-menu-header">
-        <a href="#" class="mobile-menu-logo">yachtjet</a>
-        <button class="mobile-menu-close-btn" type="button">
-          <svg class="mobile-menu-close-icon" width="16" height="16">
-            <use href="./images/icons.svg#icon-mobile-close"></use>
-          </svg>
-        </button>
-      </div>
-
-      <nav class="mobile-nav">
-        <ul class="mobile-nav-list">
-          <li class="mobile-nav-item">
-            <a href="#about" class="mobile-nav-link">About</a>
-          </li>
-          <li class="mobile-nav-item">
-            <a href="#yachts" class="mobile-nav-link">Yachts</a>
-          </li>
-          <li class="mobile-nav-item">
-            <a href="#reviews" class="mobile-nav-link">Reviews</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="mobile-socials">
-        <ul class="mobile-socials-list">
-          <li class="mobile-socials-item">
-            <a class="mobile-socials-link" href="#">
-              <svg class="mobile-socials-icon" width="20" height="20">
-                <use href="./images/icons.svg#icon-insta"></use>
-              </svg>
-            </a>
-          </li>
-          <li class="mobile-socials-item">
-            <a class="mobile-socials-link" href="#"
-              ><svg class="mobile-socials-icon" width="20" height="20">
-                <use href="./images/icons.svg#icon-youtube"></use></svg
-            ></a>
-          </li>
-          <li class="mobile-socials-item">
-            <a class="mobile-socials-link" href="#"
-              ><svg class="mobile-socials-icon" width="20" height="20">
-                <use href="./images/icons.svg#icon-fb"></use></svg
-            ></a>
-          </li>
-        </ul>
-      </div>
-    </div> -->
-
-    <div class="mobile-menu">
-      <div class="mobile-menu-header">
-        <a href="#hero" class="mobile-menu-logo">yachtjet</a>
+        <a href="#hero" class="mobile-menu-logo" aria-label="YachtJet home"
+          >yachtjet</a
+        >
 
         <button
           class="mobile-menu-close-btn"
@@ -771,5 +724,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="./main.js"></script>
   </body>
 </html>
