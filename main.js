@@ -1,3 +1,5 @@
+// ----------- mobile menu -----------
+
 const openMenuBtn = document.querySelector(".menu-open-btn");
 const closeMenuBtn = document.querySelector(".mobile-menu-close-btn");
 const mobileMenu = document.querySelector(".mobile-menu");
@@ -73,6 +75,8 @@ document.addEventListener("keydown", (event) => {
 
 const header = document.querySelector(".header");
 
+// ----------- header scroll -----------
+
 function updateHeaderOnScroll() {
   header.classList.toggle("is-scrolled", window.scrollY > 600);
 }
@@ -80,3 +84,5 @@ function updateHeaderOnScroll() {
 window.addEventListener("scroll", updateHeaderOnScroll);
 
 updateHeaderOnScroll();
+
+// ----------- yacht catalog -----------
