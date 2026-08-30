@@ -352,3 +352,29 @@ function resetFormStates() {
   emailError.textContent = "";
   phoneError.textContent = "";
 }
+
+fullNameInput.addEventListener("blur", validateFullName);
+emailInput.addEventListener("blur", validateEmail);
+phoneInput.addEventListener("blur", validatePhone);
+
+fullNameInput.addEventListener("input", () => {
+  if (fullNameInput.classList.contains("is-error")) {
+    validateFullName();
+  }
+});
+
+emailInput.addEventListener("input", () => {
+  if (emailInput.classList.contains("is-error")) {
+    validateEmail();
+  }
+});
+
+phoneInput.addEventListener("input", () => {
+  if (phoneInput.classList.contains("is-error")) {
+    validatePhone();
+  }
+});
+
+rentForm.addEventListener("input", () => {
+  successMessage.textContent = "";
+});
