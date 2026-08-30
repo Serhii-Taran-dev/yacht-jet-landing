@@ -277,6 +277,7 @@ function validateFullName() {
 }
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phonePattern = /^[+\d\s()-]+$/;
 
 function validateEmail() {
   const value = emailInput.value.trim();
@@ -292,5 +293,33 @@ function validateEmail() {
   }
 
   showValid(emailInput, emailError);
+  return true;
+}
+
+function validatePhone() {
+  const value = phoneInput.value.trim();
+
+  if (value === "") {
+    showError(phoneInput, phoneError, "Please enter your phone number.");
+    return false;
+  }
+
+  if (!phonePattern.test(value)) {
+    showError(phoneInput, phoneError, "Please enter a valid phone number.");
+    return false;
+  }
+
+  const digits = value.replace(/\D/g, "");
+
+  if (digits.length < 7 || digits.length > 15) {
+    showError(
+      phoneInput,
+      phoneError,
+      "Phone number must contain 7 to 15 digits.",
+    );
+    return false;
+  }
+
+  showValid(phoneInput, phoneError);
   return true;
 }
