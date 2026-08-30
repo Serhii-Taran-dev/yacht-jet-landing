@@ -410,3 +410,16 @@ function getVisibleReviews() {
 
   return 1;
 }
+
+function getReviewsMaxIndex() {
+  return reviewsCard.length - getVisibleReviews();
+}
+
+function updateReviewsControls() {
+  const maxIndex = getReviewsMaxIndex();
+
+  reviewsPrevBtn.disabled = reviewsCurrentIndex === 0;
+  reviewsNextBtn.disabled = reviewsCurrentIndex >= maxIndex;
+}
+
+updateReviewsControls();
