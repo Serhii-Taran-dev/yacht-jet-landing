@@ -451,3 +451,13 @@ reviewsNextBtn.addEventListener("click", () => {
     updateReviewsSlider();
   }
 });
+
+window.addEventListener("resize", () => {
+  const maxIndex = getReviewsMaxIndex();
+
+  if (reviewsCurrentIndex > maxIndex) {
+    reviewsCurrentIndex = maxIndex;
+  }
+
+  updateReviewsSlider();
+});
