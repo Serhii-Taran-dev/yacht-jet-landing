@@ -323,3 +323,32 @@ function validatePhone() {
   showValid(phoneInput, phoneError);
   return true;
 }
+
+rentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const isFullNameValid = validateFullName();
+  const isEmailValid = validateEmail();
+  const isPhoneValid = validatePhone();
+
+  if (!isFullNameValid || !isEmailValid || !isPhoneValid) {
+    successMessage.textContent = "";
+    return;
+  }
+
+  successMessage.textContent = "Thank you. Our team will contact you shortly.";
+
+  rentForm.reset();
+  resetFormStates();
+});
+
+function resetFormStates() {
+  [fullNameInput, emailInput, phoneInput].forEach((input) => {
+    input.classList.remove("is-valid", "is-error");
+    input.removeAttribute("aria-invalid");
+  });
+
+  fullNameError.textContent = "";
+  emailError.textContent = "";
+  phoneError.textContent = "";
+}
