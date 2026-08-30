@@ -275,3 +275,22 @@ function validateFullName() {
   showValid(fullNameInput, fullNameError);
   return true;
 }
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateEmail() {
+  const value = emailInput.value.trim();
+
+  if (value === "") {
+    showError(emailInput, emailError, "Please enter your email address.");
+    return false;
+  }
+
+  if (!emailPattern.test(value)) {
+    showError(emailInput, emailError, "Please enter a valid email address.");
+    return false;
+  }
+
+  showValid(emailInput, emailError);
+  return true;
+}
