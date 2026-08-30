@@ -412,7 +412,7 @@ function getVisibleReviews() {
 }
 
 function getReviewsMaxIndex() {
-  return reviewsCards.length - getVisibleReviews();
+  return Math.max(0, reviewsCards.length - getVisibleReviews());
 }
 
 function updateReviewsControls() {
@@ -463,16 +463,14 @@ window.addEventListener("resize", () => {
 });
 
 let reviewsTouchStartX = 0;
-let reviewsTouchEndX = 0;
 
 reviewsSlider.addEventListener("touchstart", (event) => {
   reviewsTouchStartX = event.touches[0].clientX;
 });
 
 reviewsSlider.addEventListener("touchend", (event) => {
-  reviewsTouchEndX = event.changedTouches[0].clientX;
-
-  const swipeDistance = reviewsTouchEndX - reviewsTouchStartX;
+  const touchEndX = event.changedTouches[0].clientX;
+  const swipeDistance = touchEndX - reviewsTouchStartX;
   const swipeThreshold = 50;
 
   if (Math.abs(swipeDistance) < swipeThreshold) {
