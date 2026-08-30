@@ -461,3 +461,33 @@ window.addEventListener("resize", () => {
 
   updateReviewsSlider();
 });
+
+let reviewsTouchStartX = 0;
+let reviewsTouchEndX = 0;
+
+reviewsSlider.addEventListener("touchstart", (event) => {
+  reviewsTouchStartX = event.touches[0].clientX;
+});
+
+reviewsSlider.addEventListener("touchend", (event) => {
+  reviewsTouchEndX = event.changedTouches[0].clientX;
+
+  const swipeDistance = reviewsTouchEndX - reviewsTouchStartX;
+  const swipeThreshold = 50;
+
+  if (Math.abs(swipeDistance) < swipeThreshold) {
+    return;
+  }
+
+  const maxIndex = getReviewsMaxIndex();
+
+  if (swipeDistance < 0 && reviewsCurrentIndex < maxIndex) {
+    reviewsCurrentIndex += 1;
+    updateReviewsSlider();
+  }
+
+  if (swipeDistance > 0 && reviewsCurrentIndex > 0) {
+    reviewsCurrentIndex -= 1;
+    updateReviewsSlider();
+  }
+});
