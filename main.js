@@ -412,7 +412,7 @@ function getVisibleReviews() {
 }
 
 function getReviewsMaxIndex() {
-  return reviewsCard.length - getVisibleReviews();
+  return reviewsCards.length - getVisibleReviews();
 }
 
 function updateReviewsControls() {
@@ -422,4 +422,16 @@ function updateReviewsControls() {
   reviewsNextBtn.disabled = reviewsCurrentIndex >= maxIndex;
 }
 
-updateReviewsControls();
+function updateReviewsSlider() {
+  const cardWidth = reviewsCards[0].getBoundingClientRect().width;
+  const styles = window.getComputedStyle(reviewsList);
+  const gap = parseFloat(styles.gap);
+
+  const offset = reviewsCurrentIndex * (cardWidth + gap);
+
+  reviewsList.style.transform = `translateX(-${offset}px)`;
+
+  updateReviewsControls();
+}
+
+updateReviewsSlider();
