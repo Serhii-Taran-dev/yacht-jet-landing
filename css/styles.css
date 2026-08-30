@@ -1751,11 +1751,6 @@ html {
   background-color: var(--color-light);
 }
 
-.reviews-card:nth-child(2),
-.reviews-card:nth-child(3) {
-  display: none;
-}
-
 .reviews-img {
   display: block;
   width: 56px;
@@ -1811,10 +1806,6 @@ html {
     gap: 32px;
   }
 
-  .reviews-card:nth-child(2) {
-    display: block;
-  }
-
   .reviews-card {
     max-width: 336px;
   }
@@ -1831,10 +1822,6 @@ html {
 
   .reviews-list {
     gap: 26px;
-  }
-
-  .reviews-card:nth-child(3) {
-    display: block;
   }
 
   .reviews-card {
