@@ -238,3 +238,19 @@ const successMessage = document.querySelector(".form-success");
 const fullNameError = document.querySelector("#full-name-error");
 const emailError = document.querySelector("#email-error");
 const phoneError = document.querySelector("#phone-error");
+
+function showError(input, errorElement, successMessage) {
+  input.classList.add("is-error");
+  input.classList.remove("is-valid");
+
+  input.setAttribute("aria-invalid", "true");
+  errorElement.textContent = message;
+}
+
+function showValid(input, errorElement) {
+  input.classList.remove("is-error");
+  input.classList.add("is-valid");
+
+  input.removeAttribute("aria-invalid");
+  errorElement.textContent = "";
+}
