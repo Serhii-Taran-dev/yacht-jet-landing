@@ -387,3 +387,26 @@ phoneInput.addEventListener("input", () => {
 rentForm.addEventListener("input", () => {
   successMessage.textContent = "";
 });
+
+// ----------- reviews -----------
+
+const reviewsSlider = document.querySelector(".reviews-slider");
+const reviewsList = document.querySelector(".reviews-list");
+const reviewsCard = document.querySelector(".reviews-card");
+
+const reviewsPrevBtn = document.querySelector(".reviews-prev");
+const reviewsNextBtn = document.querySelector(".reviews-next");
+
+const reviewsCurrentIndex = 0;
+
+function getVisibleReviews() {
+  if (window.innerWidth >= 1280) {
+    return 3;
+  }
+
+  if (window.innerWidth >= 768) {
+    return 2;
+  }
+
+  return 1;
+}
