@@ -226,3 +226,15 @@ yachtList.addEventListener("pointercancel", () => {
   startX = 0;
   currentX = 0;
 });
+
+// ----------- rent form -----------
+
+const rentForm = document.querySelector(".rent-form");
+const fullNameInput = document.querySelector("#full-name");
+const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const successMessage = document.querySelector(".form-success");
+
+const fullNameError = document.querySelector("#full-name-error");
+const emailError = document.querySelector("#email-error");
+const phoneError = document.querySelector("#phone-error");

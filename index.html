@@ -182,7 +182,22 @@
 
           <a class="hero-btn" href="#yachts">
             Explore yachts
-            <span aria-hidden="true">→</span>
+            <svg
+              class="btn-arrow"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 12H19M13 6L19 12L13 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </a>
         </div>
       </section>
@@ -566,7 +581,21 @@
               type="button"
               aria-label="Previous yacht"
             >
-              ←
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 12H5M11 18L5 12L11 6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </button>
 
             <button
@@ -574,13 +603,42 @@
               type="button"
               aria-label="Next yacht"
             >
-              →
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12H19M13 6L19 12L13 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </button>
           </div>
 
           <a href="#rent" class="yacht-catalog-btn">
             Request a yacht
-            <span aria-hidden="true">→</span>
+            <svg
+              class="btn-arrow"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 12H19M13 6L19 12L13 18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </a>
         </div>
       </section>
@@ -678,8 +736,10 @@
               </p>
             </div>
 
-            <form class="rent-form">
+            <form class="rent-form" novalidate>
               <div class="form-field">
+                <label class="visually-hidden" for="full-name">Full name</label>
+
                 <input
                   type="text"
                   name="full-name"
@@ -687,11 +747,14 @@
                   autocomplete="name"
                   class="form-input"
                   placeholder="Full Name"
-                  required
+                  aria-describedby="full-name-error"
                 />
+                <p class="form-error" id="full-name-error"></p>
               </div>
 
               <div class="form-field">
+                <label class="visually-hidden" for="email">Email</label>
+
                 <input
                   type="email"
                   name="email"
@@ -699,11 +762,14 @@
                   autocomplete="email"
                   class="form-input"
                   placeholder="Email"
-                  required
+                  aria-describedby="email-error"
                 />
+                <p class="form-error" id="email-error"></p>
               </div>
 
               <div class="form-field">
+                <label class="visually-hidden" for="phone">Phone number</label>
+
                 <input
                   type="tel"
                   name="phone"
@@ -711,11 +777,14 @@
                   autocomplete="tel"
                   class="form-input"
                   placeholder="Phone number"
-                  required
+                  aria-describedby="phone-error"
                 />
+                <p class="form-error" id="phone-error"></p>
               </div>
 
               <div class="form-field">
+                <label class="visually-hidden" for="comment">Comment</label>
+
                 <textarea
                   name="comment"
                   id="comment"
@@ -726,8 +795,25 @@
 
               <button type="submit" class="form-btn">
                 Send request
-                <span aria-hidden="true">→</span>
+                <svg
+                  class="btn-arrow"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 12H19M13 6L19 12L13 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </button>
+
+              <p class="form-success" aria-live="polite"></p>
             </form>
           </div>
 
