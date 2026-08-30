@@ -254,3 +254,24 @@ function showValid(input, errorElement) {
   input.removeAttribute("aria-invalid");
   errorElement.textContent = "";
 }
+
+function validateFullName() {
+  const value = fullNameInput.value.trim();
+
+  if (value === "") {
+    showError(fullNameInput, fullNameError, "Please enter your full name.");
+    return false;
+  }
+
+  if (value.length < 2) {
+    showError(
+      fullNameInput,
+      fullNameError,
+      "Name must contain at least 2 characters.",
+    );
+    return false;
+  }
+
+  showValid(fullNameInput, fullNameError);
+  return true;
+}
