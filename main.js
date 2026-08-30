@@ -106,6 +106,10 @@ function getVisibleYachts() {
   return 1;
 }
 
+function getYachtMaxIndex() {
+  return Math.max(0, yachtCards.length - getVisibleYachts());
+}
+
 function updateYachtCarousel() {
   const cardWidth = yachtCards[0].getBoundingClientRect().width;
   const styles = window.getComputedStyle(yachtList);
@@ -119,16 +123,14 @@ function updateYachtCarousel() {
 }
 
 function updateYachtControls() {
-  const visibleYachts = getVisibleYachts();
-  const maxIndex = yachtCards.length - visibleYachts;
+  const maxIndex = getYachtMaxIndex();
 
   prevYachtBtn.disabled = currentYachtIndex === 0;
-  nextYachtBtn.disabled = currentYachtIndex === maxIndex;
+  nextYachtBtn.disabled = currentYachtIndex >= maxIndex;
 }
 
 nextYachtBtn.addEventListener("click", () => {
-  const visibleYachts = getVisibleYachts();
-  const maxIndex = yachtCards.length - visibleYachts;
+  const maxIndex = getYachtMaxIndex();
 
   if (currentYachtIndex < maxIndex) {
     currentYachtIndex += 1;
@@ -143,11 +145,10 @@ prevYachtBtn.addEventListener("click", () => {
   }
 });
 
-updateYachtControls();
+updateYachtCarousel();
 
 function handleYachtResize() {
-  const visibleYachts = getVisibleYachts();
-  const maxIndex = yachtCards.length - visibleYachts;
+  const maxIndex = getYachtMaxIndex();
 
   if (currentYachtIndex > maxIndex) {
     currentYachtIndex = maxIndex;
@@ -164,6 +165,10 @@ let isDragging = false;
 let startOffset = 0;
 
 yachtList.addEventListener("pointerdown", (event) => {
+  if (!event.isPrimary || event.button !== 0) {
+    return;
+  }
+
   isDragging = true;
   startX = event.clientX;
   currentX = startX;
@@ -198,8 +203,7 @@ yachtList.addEventListener("pointerup", (event) => {
 
   yachtList.style.transition = "";
 
-  const visibleYachts = getVisibleYachts();
-  const maxIndex = yachtCards.length - visibleYachts;
+  const maxIndex = getYachtMaxIndex();
 
   if (swipeDistance < -swipeThreshold && currentYachtIndex < maxIndex) {
     currentYachtIndex += 1;
@@ -463,28 +467,37 @@ window.addEventListener("resize", () => {
 });
 
 let reviewsTouchStartX = 0;
+let reviewsTouchStartY = 0;
 
 reviewsSlider.addEventListener("touchstart", (event) => {
   reviewsTouchStartX = event.touches[0].clientX;
+  reviewsTouchStartY = event.touches[0].clientY;
 });
 
 reviewsSlider.addEventListener("touchend", (event) => {
   const touchEndX = event.changedTouches[0].clientX;
-  const swipeDistance = touchEndX - reviewsTouchStartX;
+  const touchEndY = event.changedTouches[0].clientY;
+
+  const swipeDistanceX = touchEndX - reviewsTouchStartX;
+  const swipeDistanceY = touchEndY - reviewsTouchStartY;
+
   const swipeThreshold = 50;
 
-  if (Math.abs(swipeDistance) < swipeThreshold) {
+  if (
+    Math.abs(swipeDistanceX) < swipeThreshold ||
+    Math.abs(swipeDistanceX) <= Math.abs(swipeDistanceY)
+  ) {
     return;
   }
 
   const maxIndex = getReviewsMaxIndex();
 
-  if (swipeDistance < 0 && reviewsCurrentIndex < maxIndex) {
+  if (swipeDistanceX < 0 && reviewsCurrentIndex < maxIndex) {
     reviewsCurrentIndex += 1;
     updateReviewsSlider();
   }
 
-  if (swipeDistance > 0 && reviewsCurrentIndex > 0) {
+  if (swipeDistanceX > 0 && reviewsCurrentIndex > 0) {
     reviewsCurrentIndex -= 1;
     updateReviewsSlider();
   }
