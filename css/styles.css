@@ -1446,6 +1446,8 @@ html {
 }
 
 .rent-form {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1481,6 +1483,12 @@ html {
 }
 
 .form-success {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+
+  width: 100%;
+
   font-size: 13px;
   line-height: 1.4;
   text-align: center;
@@ -1647,6 +1655,7 @@ html {
   .rent-container {
     flex-direction: row-reverse;
     align-items: stretch;
+
     justify-content: center;
     gap: 50px;
   }
@@ -1663,6 +1672,10 @@ html {
 
   .rent-description {
     margin-inline: 0;
+  }
+
+  .form-success {
+    text-align: left;
   }
 
   .form-btn {

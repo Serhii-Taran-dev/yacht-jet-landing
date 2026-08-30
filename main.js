@@ -230,20 +230,26 @@ yachtList.addEventListener("pointercancel", () => {
 // ----------- rent form -----------
 
 const rentForm = document.querySelector(".rent-form");
+
 const fullNameInput = document.querySelector("#full-name");
 const emailInput = document.querySelector("#email");
 const phoneInput = document.querySelector("#phone");
+
 const successMessage = document.querySelector(".form-success");
 
 const fullNameError = document.querySelector("#full-name-error");
 const emailError = document.querySelector("#email-error");
 const phoneError = document.querySelector("#phone-error");
 
-function showError(input, errorElement, successMessage) {
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phonePattern = /^[+\d\s()-]+$/;
+
+function showError(input, errorElement, message) {
   input.classList.add("is-error");
   input.classList.remove("is-valid");
 
   input.setAttribute("aria-invalid", "true");
+
   errorElement.textContent = message;
 }
 
@@ -252,6 +258,7 @@ function showValid(input, errorElement) {
   input.classList.add("is-valid");
 
   input.removeAttribute("aria-invalid");
+
   errorElement.textContent = "";
 }
 
@@ -269,15 +276,14 @@ function validateFullName() {
       fullNameError,
       "Name must contain at least 2 characters.",
     );
+
     return false;
   }
 
   showValid(fullNameInput, fullNameError);
+
   return true;
 }
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phonePattern = /^[+\d\s()-]+$/;
 
 function validateEmail() {
   const value = emailInput.value.trim();
@@ -293,6 +299,7 @@ function validateEmail() {
   }
 
   showValid(emailInput, emailError);
+
   return true;
 }
 
@@ -317,11 +324,24 @@ function validatePhone() {
       phoneError,
       "Phone number must contain 7 to 15 digits.",
     );
+
     return false;
   }
 
   showValid(phoneInput, phoneError);
+
   return true;
+}
+
+function resetFormStates() {
+  [fullNameInput, emailInput, phoneInput].forEach((input) => {
+    input.classList.remove("is-valid", "is-error");
+    input.removeAttribute("aria-invalid");
+  });
+
+  fullNameError.textContent = "";
+  emailError.textContent = "";
+  phoneError.textContent = "";
 }
 
 rentForm.addEventListener("submit", (event) => {
@@ -341,17 +361,6 @@ rentForm.addEventListener("submit", (event) => {
   rentForm.reset();
   resetFormStates();
 });
-
-function resetFormStates() {
-  [fullNameInput, emailInput, phoneInput].forEach((input) => {
-    input.classList.remove("is-valid", "is-error");
-    input.removeAttribute("aria-invalid");
-  });
-
-  fullNameError.textContent = "";
-  emailError.textContent = "";
-  phoneError.textContent = "";
-}
 
 fullNameInput.addEventListener("blur", validateFullName);
 emailInput.addEventListener("blur", validateEmail);
