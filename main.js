@@ -392,12 +392,12 @@ rentForm.addEventListener("input", () => {
 
 const reviewsSlider = document.querySelector(".reviews-slider");
 const reviewsList = document.querySelector(".reviews-list");
-const reviewsCard = document.querySelector(".reviews-card");
+const reviewsCards = document.querySelectorAll(".reviews-card");
 
 const reviewsPrevBtn = document.querySelector(".reviews-prev");
 const reviewsNextBtn = document.querySelector(".reviews-next");
 
-const reviewsCurrentIndex = 0;
+let reviewsCurrentIndex = 0;
 
 function getVisibleReviews() {
   if (window.innerWidth >= 1280) {
@@ -435,3 +435,19 @@ function updateReviewsSlider() {
 }
 
 updateReviewsSlider();
+
+reviewsPrevBtn.addEventListener("click", () => {
+  if (reviewsCurrentIndex > 0) {
+    reviewsCurrentIndex -= 1;
+    updateReviewsSlider();
+  }
+});
+
+reviewsNextBtn.addEventListener("click", () => {
+  const maxIndex = getReviewsMaxIndex();
+
+  if (reviewsCurrentIndex < maxIndex) {
+    reviewsCurrentIndex += 1;
+    updateReviewsSlider();
+  }
+});
