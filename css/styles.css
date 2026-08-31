@@ -100,15 +100,6 @@ html {
 /* ---------------------- */
 /* ------- header ------- */
 
-/* .header {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  z-index: 100;
-
-  width: 100%;
-} */
-
 .header {
   position: fixed;
   top: 20px;
@@ -260,7 +251,8 @@ html {
   }
 
   .header-nav-link:focus-visible {
-    outline: none;
+    outline: 1px solid rgba(251, 251, 251, 0.7);
+    outline-offset: 4px;
   }
 
   .header-soc-list {
@@ -538,8 +530,9 @@ html {
   background: linear-gradient(
     180deg,
     rgba(4, 3, 6, 0.02) 0%,
-    rgba(4, 3, 6, 0.06) 50%,
-    rgba(4, 3, 6, 0.16) 100%
+    rgba(4, 3, 6, 0.05) 55%,
+    rgba(4, 3, 6, 0.45) 82%,
+    var(--color-bg) 100%
   );
 }
 
@@ -595,7 +588,7 @@ html {
   min-height: 48px;
   padding: 0 28px;
 
-  border: 1px solid rgba(251, 251, 251, 0.25);
+  border: 1px solid var(--color-light);
   border-radius: 999px;
 
   background-color: var(--color-light);
@@ -639,6 +632,8 @@ html {
 
 @media screen and (min-width: 768px) {
   .hero {
+    min-height: 860px;
+
     padding-top: 140px;
     padding-bottom: 100px;
 
@@ -968,20 +963,21 @@ html {
   align-items: center;
   justify-content: center;
 
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 42px;
   padding: 0;
 
-  border: 1px solid rgba(251, 251, 251, 0.22);
-  border-radius: 50%;
+  border: 1px solid rgba(251, 251, 251, 0.35);
+  border-radius: 999px;
 
-  background-color: rgba(251, 251, 251, 0.04);
+  background-color: transparent;
   color: var(--color-light);
 
   cursor: pointer;
 
   transition:
     background-color 250ms ease,
+    color 250ms ease,
     border-color 250ms ease,
     transform 250ms ease,
     opacity 250ms ease;
@@ -994,8 +990,9 @@ html {
 
 .yacht-catalog-control:hover,
 .yacht-catalog-control:focus-visible {
-  background-color: rgba(251, 251, 251, 0.12);
-  border-color: rgba(251, 251, 251, 0.5);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-color: var(--color-light);
 }
 
 .yacht-catalog-control:hover {
@@ -1003,7 +1000,7 @@ html {
 }
 
 .yacht-catalog-control:focus-visible {
-  outline: 1px solid rgba(251, 251, 251, 0.75);
+  outline: 2px solid var(--color-light);
   outline-offset: 4px;
 }
 
@@ -1542,7 +1539,7 @@ html {
 
 .form-textarea {
   min-height: 120px;
-  resize: none;
+  resize: vertical;
 }
 
 .form-btn {
@@ -1580,7 +1577,7 @@ html {
 .form-btn:hover {
   background-color: var(--color-dark);
   color: var(--color-light);
-  border-color: rgba(251, 251, 251, 0.35);
+  border-color: var(--color-dark);
 
   transform: translateY(-2px);
 }
@@ -1803,13 +1800,13 @@ html {
   align-items: center;
   justify-content: center;
 
-  width: 44px;
-  height: 44px;
+  width: 54px;
+  height: 42px;
 
   padding: 0;
 
-  border: 1px solid rgba(251, 251, 251, 0.25);
-  border-radius: 50%;
+  border: 1px solid rgba(251, 251, 251, 0.35);
+  border-radius: 999px;
 
   background-color: transparent;
   color: var(--color-light);
@@ -1817,16 +1814,21 @@ html {
   cursor: pointer;
 
   transition:
-    border-color 250ms ease,
     background-color 250ms ease,
-    opacity 250ms ease,
-    transform 250ms ease;
+    color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease,
+    opacity 250ms ease;
+}
+
+.reviews-control:hover:not(:disabled),
+.reviews-control:focus-visible {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-color: var(--color-light);
 }
 
 .reviews-control:hover:not(:disabled) {
-  border-color: rgba(251, 251, 251, 0.6);
-  background-color: rgba(251, 251, 251, 0.06);
-
   transform: translateY(-2px);
 }
 
@@ -1836,8 +1838,13 @@ html {
 }
 
 .reviews-control:disabled {
-  opacity: 0.3;
+  opacity: 0.28;
   cursor: default;
+}
+
+.reviews-control svg {
+  width: 19px;
+  height: 19px;
 }
 
 @media screen and (min-width: 768px) {
